@@ -46,7 +46,7 @@ class GestorArchivoTest {
         HistorialCrafteo hist = new HistorialCrafteo();
         hist.registrar(items.get("palo"), Map.of());
         gestor.guardarHistorial(histOut, hist);
-        gestor.guardarHistorial(histOut, List.of(new HistorialCrafteo(items.get("palo"), Map.of(), null)));
+        //gestor.guardarHistorial(histOut, List.of(new HistorialCrafteo(items.get("palo"), Map.of(), null)));
         assertTrue(Files.size(invOut) > 0);
         assertTrue(Files.size(histOut) > 0);
         Files.delete(invOut);

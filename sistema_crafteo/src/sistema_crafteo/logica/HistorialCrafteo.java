@@ -19,23 +19,11 @@ import sistema_crafteo.objeto.Item;
 
  */
 public class HistorialCrafteo {
-    private final Item item;
-    private final Map<Item, Integer> ingredientes;
-    private final LocalDateTime fecha;
 
-    public HistorialCrafteo(Item item, Map<Item, Integer> ingredientes, LocalDateTime fecha) {
-        this.item = item;
-        this.ingredientes = ingredientes == null ? Collections.emptyMap() : ingredientes;
-        this.fecha = fecha == null ? LocalDateTime.now() : fecha;
+    public HistorialCrafteo() {
+
     }
 
-    public Item getItem() {
-        return item;
-    }
-
-    public Map<Item, Integer> getIngredientes() {
-        return Collections.unmodifiableMap(ingredientes);
-    }
 
     /** Representa un crafteo individual. */
     public static class Registro {
@@ -81,7 +69,6 @@ public class HistorialCrafteo {
     /** Devuelve la lista completa de registros en orden de inserción. */
     public List<Registro> getRegistros() {
         return Collections.unmodifiableList(registros);
-    public LocalDateTime getFecha() {
-        return fecha;
     }
+  
 }

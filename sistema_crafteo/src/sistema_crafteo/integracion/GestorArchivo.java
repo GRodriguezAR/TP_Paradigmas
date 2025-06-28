@@ -106,7 +106,8 @@ public class GestorArchivo {
 
     public void guardarHistorial(Path destino, HistorialCrafteo historial) throws IOException {
         mapper.writeValue(destino.toFile(), historial.getRegistros());
-      
+    }
+    
     public void guardarHistorial(Path destino, List<HistorialCrafteo> historial) throws IOException {
         mapper.writeValue(destino.toFile(), historial);
 
