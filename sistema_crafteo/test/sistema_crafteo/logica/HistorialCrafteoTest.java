@@ -15,6 +15,13 @@ class HistorialCrafteoTest {
     void crearRegistro_guardaDatosCorrectamente() {
         Item madera = new IngredienteBasico("madera"," ");
         LocalDateTime ahora = LocalDateTime.now();
+        HistorialCrafteo h = new HistorialCrafteo();
+        h.registrar(madera, Map.of(madera,1), ahora);
+        assertEquals(1, h.getRegistros().size());
+        HistorialCrafteo.Registro reg = h.getRegistros().get(0);
+        assertEquals(madera, reg.getItem());
+        assertTrue(reg.getIngredientes().containsKey(madera));
+        assertEquals(ahora, reg.getFecha());
         HistorialCrafteo h = new HistorialCrafteo(madera, Map.of(madera,1), ahora);
         assertEquals(madera, h.getItem());
         assertTrue(h.getIngredientes().containsKey(madera));
