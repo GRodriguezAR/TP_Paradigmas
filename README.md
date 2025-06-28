@@ -36,16 +36,39 @@ Se busca representar recetas de crafteo, ingredientes básicos, objetos intermed
     - Estado: ***Implementado y testeado, falta agregarlo a cada funcionalidad***
     - Descripcion: Craftear, por su naturaleza, requiere de un tiempo. No es instantáneo, y esos tiempos deben considerarse e informarse en cada una de las preguntas anteriores. Al realizar crafteos en cadena, los tiempos deben sumarse, y multiplicarse apropiadamente de acuerdo a la cantidad de unidades involucradas.
 8. Historial de crafteos
-    - Estado: ***Pendiente***
+    - Estado: ***En desarrollo***
     - Descripcion: Registrar cada objeto que se ha crafteado, con sus ingredientes usados y la fecha o turno de creación.
 
 ## Datos de origen
 1. recetas.json
-    - Estado: ***Pendiente***
+    - Estado: ***Implementado y testeado***
     - Descripcion: Archivo JSON que describa los elementos y los ítems, indicando también los ingredientes que lo forman (si no fueran elementos básicos). Es decir, todo lo necesario para tener la información para operar.
 2. inventario.json
-    - Estado: ***Pendiente***
+    - Estado: ***Implementado y testeado***
     - Descripcion: Archivo JSON que especifique los elementos presentes en el inventario inicial del jugador.
+
+Cada archivo utiliza un formato simple pensado para poder agregar nuevos objetos sin modificar el código:
+
+```json
+{
+  "nombreDelItem": {
+    "tipo": "basico|crafteable",
+    "descripcion": "...",
+    "tiempo": 10,
+    "recetas": [
+      { "ingredientes": {"otroItem": 2}, "cantidadGenerada": 1 }
+    ]
+  }
+}
+```
+
+El inventario inicial solo referencia estos nombres y las cantidades disponibles:
+
+```json
+{
+  "items": { "madera": 4, "palo": 1 }
+}
+```
 
 ## Integracion Prolog
 - Estado: ***Pendiente***
