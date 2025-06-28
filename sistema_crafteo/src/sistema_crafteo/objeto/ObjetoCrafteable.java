@@ -35,10 +35,27 @@ public class ObjetoCrafteable extends Item {
 		return true;
 	}
 
-	@Override
-	public String getArbolCrafteo() {
-		return "a";
-	}
+       @Override
+       public String getArbolCrafteo() {
+               if (recetas.isEmpty()) {
+                       return nombre;
+               }
+
+               StringBuilder sb = new StringBuilder(nombre);
+               sb.append(" = ");
+               boolean first = true;
+               for (Map.Entry<Item, Integer> entry : recetas.get(0).getIngredientes().entrySet()) {
+                       if (!first) {
+                               sb.append(" + ");
+                       }
+                       sb.append(entry.getValue());
+                       sb.append(" ");
+                       sb.append(entry.getKey().getArbolCrafteo());
+                       first = false;
+               }
+
+               return sb.toString();
+       }
 
 	public List<Receta> getRecetas() {
 		return recetas;
