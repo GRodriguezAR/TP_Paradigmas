@@ -22,5 +22,9 @@ class HistorialCrafteoTest {
         assertEquals(madera, reg.getItem());
         assertTrue(reg.getIngredientes().containsKey(madera));
         assertEquals(ahora, reg.getFecha());
+        HistorialCrafteo h = new HistorialCrafteo(madera, Map.of(madera,1), ahora);
+        assertEquals(madera, h.getItem());
+        assertTrue(h.getIngredientes().containsKey(madera));
+        assertEquals(ahora, h.getFecha());
     }
 }

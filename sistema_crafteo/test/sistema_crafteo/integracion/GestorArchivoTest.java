@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -45,6 +46,7 @@ class GestorArchivoTest {
         HistorialCrafteo hist = new HistorialCrafteo();
         hist.registrar(items.get("palo"), Map.of());
         gestor.guardarHistorial(histOut, hist);
+        gestor.guardarHistorial(histOut, List.of(new HistorialCrafteo(items.get("palo"), Map.of(), null)));
         assertTrue(Files.size(invOut) > 0);
         assertTrue(Files.size(histOut) > 0);
         Files.delete(invOut);

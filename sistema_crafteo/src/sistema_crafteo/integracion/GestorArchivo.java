@@ -103,8 +103,13 @@ public class GestorArchivo {
     }
 
     /** Escribe el historial de crafteo en formato JSON. */
+
     public void guardarHistorial(Path destino, HistorialCrafteo historial) throws IOException {
         mapper.writeValue(destino.toFile(), historial.getRegistros());
+      
+    public void guardarHistorial(Path destino, List<HistorialCrafteo> historial) throws IOException {
+        mapper.writeValue(destino.toFile(), historial);
+
     }
 
     /** Escribe el inventario actual en formato JSON. */
