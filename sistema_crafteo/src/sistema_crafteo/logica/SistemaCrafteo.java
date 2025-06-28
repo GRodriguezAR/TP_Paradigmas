@@ -12,12 +12,12 @@ import sistema_crafteo.objeto.Item;
 import sistema_crafteo.objeto.Receta;
 
 public class SistemaCrafteo {
-	private Set<Item> itemsRegistrados;
-	private final List<HistorialCrafteo> historial;
+    private Set<Item> itemsRegistrados;
+    private final HistorialCrafteo historial;
 
 	public SistemaCrafteo() {
-		itemsRegistrados = new HashSet<>();
-		historial = new LinkedList<>();
+        itemsRegistrados = new HashSet<>();
+        historial = new HistorialCrafteo();
 	}
 
 	public boolean registrarItem(Item item) {
@@ -153,15 +153,14 @@ public class SistemaCrafteo {
 		return cantidad;
 	}
 
-	public boolean craftear(Inventario inventario, Item item) {
-		if(!ejecutarCrafteo(inventario, item)) {
-			return false;
-		}
-		
-		HistorialCrafteo registro = new HistorialCrafteo();
-		historial.add(registro);
-		return true;
-	}
+        public boolean craftear(Inventario inventario, Item item) {
+                if(!ejecutarCrafteo(inventario, item)) {
+                        return false;
+                }
+
+                historial.registrar(item, item.getIngredientes());
+                return true;
+        }
 
 	private boolean ejecutarCrafteo(Inventario inventario, Item item) {
 		if (!item.esCrafteable()) {
@@ -209,7 +208,7 @@ public class SistemaCrafteo {
 		return itemsRegistrados;
 	}
 
-	public List<HistorialCrafteo> getHistorial() {
-		return historial;
-	}
+        public HistorialCrafteo getHistorial() {
+                return historial;
+        }
 }
